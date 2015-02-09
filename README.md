@@ -10,10 +10,6 @@ Installation
 
 Using Composer (recommended)
 ----------------------------
-You should be able to get up in running just by running the following command in a command prompt.
-
-    php composer.phar
-
 Clone the repository and manually invoke `composer` using the shipped
 `composer.phar`:
 
