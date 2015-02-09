@@ -16,8 +16,8 @@ return array(
                     'route'    => '/',
                     'defaults' => array(
 //                        'controller' => 'Application\Controller\Index',
-                        'controller' => 'Appointment\Controller\Appointment',
-                        'action'     => 'index',
+                        'controller' => 'Appointment\Controller\User',
+                        'action'     => 'login',
                     ),
                 ),
             ),

@@ -3,11 +3,28 @@ namespace Appointment\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\View\View;
+
+#auth
+use Zend\Authentication\AuthenticationService;
+use Zend\Authentication\Adapter\Ldap as AuthAdapter;
+use Zend\Config\Reader\Ini as ConfigReader;
+use Zend\Config\Config;
+use Zend\Log\Logger;
+use Zend\Log\Writer\Stream as LogWriter;
+use Zend\Log\Filter\Priority as LogFilter;
 
 class UserController extends AbstractActionController
 {
     protected $userTable;
+    protected $auth;
+
+    public function __construct()
+    {
+        if(!$this->auth)
+        {
+            $this->auth = new AuthenticationService();
+        }
+    }
 
     public function indexAction()
     {
@@ -29,7 +46,12 @@ class UserController extends AbstractActionController
         return new ViewModel();
     }
 
-    public  function deleteAction()
+    public function deleteAction()
+    {
+
+    }
+
+    public function loginAction()
     {
 
     }
