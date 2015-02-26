@@ -5,7 +5,7 @@ use Appointment\Form\AppointmentForm;
 use Appointment\Model\Appointment;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Zend\View\View;
+use Zend\Mail;
 
 class AppointmentController extends AbstractActionController
 {
@@ -18,6 +18,13 @@ class AppointmentController extends AbstractActionController
             array(
                 'appointments' => $this->getAppointmentTable()->fetchAll(),
             )
+        );
+    }
+
+    public function apiAction()
+    {
+        return array(
+                'appointments' => $this->getAppointmentTable()->fetchAll(),
         );
     }
 
@@ -36,6 +43,16 @@ class AppointmentController extends AbstractActionController
                 $appt->exchangeArray($form->getData());
                 $this->getAppointmentTable()->saveAppointment($appt);
 
+                $mail = new Mail\Message();
+                $mail->setSubject('New Test Scheduled at CS Testing Center');
+                $mail->setBody('You have added an appointment at '.$appt->start_time.'. ');
+                $mail->setFrom('cstestcenter@test.com');
+                $mail->setTo('wesleyeff@gmail.com');
+
+                $transport = new Mail\Transport\Sendmail();
+                $transport->send($mail);
+
+
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('appointment');
             }
@@ -45,6 +62,14 @@ class AppointmentController extends AbstractActionController
 
     public function editAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if(!$id)
+        {
+            return $this->redirect()->toRoute('appointment', array(
+                'action' => 'add'
+            ));
+        }
+
         return new ViewModel();
     }
 

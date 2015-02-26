@@ -57,6 +57,12 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     $resultSetPrototype->setArrayObjectPrototype(new Appointment());
                     return new TableGateway('appointments', $dbAdapter, null, $resultSetPrototype);
                 },
+                'Appointment\Model\AuthStorage' => function($sm) {
+                    return new \Appointment\Model\AuthStorage();
+                },
+                'AuthService' => function($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                }
             ),
         );
     }

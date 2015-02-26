@@ -19,14 +19,20 @@ class AppointmentForm extends Form
             'name' => 'user_id',
             'type' => 'Text',
             'options' => array(
-                'label' => 'User ID'
+                'label' => 'User ID',
             ),
+            'attributes' => array(
+                //'class' => 'col-md-4',
+            )
         ));
         $this->add(array(
             'name' => 'start_time',
             'type' => 'Text',
             'options' => array(
-                'label' => 'Start Time'
+                'label' => 'Start Time',
+            ),
+            'attributes' => array(
+                'class' => 'datepickerthing',
             ),
         ));
         $this->add(array(
@@ -35,12 +41,18 @@ class AppointmentForm extends Form
             'options' => array(
                 'label' => 'End Time'
             ),
+            'attributes' => array(
+                'class' => 'datepickerthing',
+            ),
         ));
         $this->add(array(
             'name' => 'checkin_time',
             'type' => 'Text',
             'options' => array(
                 'label' => 'Checkin Time'
+            ),
+            'attributes' => array(
+                'class' => 'datepickerthing',
             ),
         ));
         $this->add(array(
@@ -49,12 +61,18 @@ class AppointmentForm extends Form
             'options' => array(
                 'label' => 'Checkout Time'
             ),
+            'attributes' => array(
+                'class' => 'datepickerthing',
+            ),
         ));
         $this->add(array(
             'name' => 'exam_id',
             'type' => 'Text',
             'options' => array(
                 'label' => 'Exam ID'
+            ),
+            'attributes' => array(
+                'class' => 'form-control',
             ),
         ));
         $this->add(array(

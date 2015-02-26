@@ -1,0 +1,334 @@
+/*
+	This is to define how I will have my page Layout
+	Inside the Body are division which are formatted as follows...
+		A 'PageWrapper' includes the whole page
+			A 'pageWrapperInner' includes the content of the whole page in the center of the screen
+				A 'headerWrapper' includes just the header of the screen
+				A 'contentWrapper' includes the center center of the screen which includes 3 div's
+					A 'sidebar1' includes the navigation for the website on the left side of the screen
+					A 'mainContent' That includes the content for the individual website center of the screen
+					A 'sidebar2' that includes contact Info for the website
+				A 'footerWrapper' contains the footer or copywrite info
+*/
+/*-- Default style --*/
+html { 
+	overflow: scroll; 
+	background: #FFF url(http://www.weber.edu/ui/images/mnts-body.jpg) repeat-x bottom;
+}
+body { 
+	margin: auto;
+	text-align: center } /* this forces IE to allign correctly */
+p, li, body, tr, td { 
+	font-family: Serif;
+	font-size: 1em; 
+    list-style: none; 
+}
+h1, h2, h3, h4, h5, h6, a {
+	font-family: Serif;
+	color: #532E63;
+	text-decoration: none; 
+	font-size: 1.1em;
+}
+
+a:hover { 
+	
+	text-decoration: underline; 
+	color: #9966CC; }
+h1 { 
+	text-align: center;
+	font-size: 28px; 
+	font-weight: bold; }
+h2 {
+	font-size: 18px; 
+	font-weight: bold; }
+h3 {
+	font-size: 16px;
+	font-weight: bold;
+	}
+p {
+	font-size: .9em;
+	color: #000000; } 
+h4 {
+	font-size: 11px;
+	color: #000000; }
+em {
+	font-style: italic;
+	font-family: sans-serif; }
+img {
+	border: 0;}
+.alert {
+	font-style: italic;
+	color: #FF0000; }
+.clear {
+	clear: both; }
+.center {
+	text-align: center; }
+.tableCenter { /* Centers a Table */
+	margin-left:auto; 
+	margin-right:auto; }
+.white {
+	color: #FFFFFF; }
+.green {
+	color: #00FF00; }
+.red {
+	color: #FF0000; }
+.blue {
+	color: #0000FF; }
+/*-- End Default style --*/
+
+/* divisions (Ordered as mentioned above) */
+#PageWrapper{
+	width:990px; 
+	margin: auto;
+	padding: 0px;
+	border: 0px;
+	position:relative;
+	/*background-image: url(../images/LeftDropShadow230.png);
+	background-position: left; 
+	background-repeat: repeat-y;*/}
+#pageWrapperInner{ /* *** */
+	max-width: 1600px;
+	/*height: auto;*/
+	margin: auto;
+	padding: 0px;
+	border: 0px;
+	position: relative;
+	/*top: -8px;
+	left: -8px;*/
+	text-align: left;
+	/*background-image: url(../images/RightDropShadow200.png);
+	background-position: right; 
+	background-repeat: repeat-y;
+	/*background-color: #000000;*/ }
+
+/*-- Start Header Content --*/
+#headerWrapper{ 
+	background: url(http://www.weber.edu/ui/images/site-manager-templates/blurry-lights-purple-background.jpg) no-repeat;
+	position: relative;
+	height: 137px;
+	min-width: 980px;
+	max-width: 1600px;
+}
+/*-- Weber logo on the left --*/
+#imgWSULogo { 
+	position: absolute; 
+	left: 65px; 
+	top: 15px; }
+/*-- Title information on the top --*/
+#LargeTitle {
+	position: absolute; 
+	left: 240px; 
+	top: 25px; 
+	color: #ffffff; 
+	font-size: 24pt; 
+	font-family: Impact, sans-serif;
+}
+#LargeSubtitle {
+	position: absolute; 
+	left: 240px; 
+	top: 60px; 
+	color: #fffffE; 
+	font-size: 13pt; }
+/*-- Navigation at top right for Weber State Links --*/
+#tacticalNavigation { 
+	position:absolute; 
+	top:10px; 
+	right:15px; 
+	color:#532E63; 
+	text-align:right; }
+#tacticalNavigation ul { 
+	margin:0; }
+#tacticalNavigation ul li { 
+	display:inline; 
+	color:#fff; }
+#tacticalNavigation ul li:after { 
+	padding-right:5px; 
+	content:"|"; 
+	padding-left:5px; }
+#tacticalNavigation ul li.tacticalNavigation_lastchild:after { 
+	content:""; 
+	padding:0; }
+#tacticalNavigation a { 
+	color:#fff;}
+.FontNavTactical { 
+	text-decoration: none; 
+	font-size: 11px; 
+	color:#fff; }
+a.FontNavTactical{ 
+	text-decoration: none; 
+	font-size: 11px; 
+	color:#fff; }
+a.FontNavTactical:hover { 
+	text-decoration: underline; 
+	font-size: 11px; 
+	color:#fff; }
+/*-- The Breadcrumbs 
+		how to we got here from the Weber State homepage --*/	
+#breadcrumbs{
+	position: absolute;
+	bottom: 45px;
+	right: 15px;
+	text-align: right;
+	margin-left: 15px;
+	z-index: 1; }
+#breadcrumbs ul{
+	margin: 0; 
+	display: none;
+}
+#breadcrumbs ul li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 15px;
+	padding-left: 5px;
+	background:url(../images/doublearrow.gif) no-repeat right; }
+#breadcrumbs li.FontNavBreadcrumbs_finalItem { /* don't display the final double arrow */
+	background:none; 
+	padding-right:0; }
+.FontNavBreadcrumbs {
+	color: #FFFFFE; 
+	font-size: 11px;
+	text-decoration: none;
+	text-align:right; }
+#navigationBar{
+	display: none;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 745px;
+	background-color: #D0CAD2;
+	height: 30px;
+	padding: 10px 10px 0 5px;
+	-moz-border-radius: 10px 0 0 0;
+	-webkit-border-radius: 10px 0 0 0;
+	border-radius: 10px 0 0 0; }
+/*-- End Header Content --*/
+
+/*-- Start Content Wrapper --*/
+#contentWrapper{
+	/* content Wrapper is not stretching over child divs... */
+	width:100%;
+	/*height: auto;
+	min-height: 100%;*/
+	min-width: 980px;
+	position: relative;
+	/*background-color:#FF0000;*/
+	clear: both;}
+
+/*-- Start navigation/Sidebar styling --*/
+#sidebar1Header {
+    padding:10px;
+    width:200px; 
+    background-color: rgb(126, 98, 138);
+    margin-top:20px;
+    -moz-border-radius:0 10px 10px 0;
+    /* -webkit-border-radius:0 10px 10px 0; */
+    /* border-radius:0 10px 10px 0; */
+    color:#fff;
+    /*font-weight:bold;
+	font-size: 13px;
+	padding-left: -35px; */
+    }
+#sidebar1Header h1, #sidebar2Header h1, #sidebar2operation h1 {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	/*border: 0 0 0 0;*/
+	border: 0px;
+	/*border-collapse: collapse;*/
+	color:#fff;
+	text-align: left;
+    font-weight:bold;
+	font-family: Serif;
+	font-size: 1em;
+}
+#sidebar1 { 
+	width: 230px;
+	float: left; 
+	clear: both;
+	overflow: hidden;
+	color: #532E63;
+	min-height: 100%;
+	margin-bottom: 0px;
+	/*background-image: url(../images/LeftDropShadow230.png);
+	background-position: left; 
+	background-repeat: repeat-y; */}
+#mainNavigation ul {
+	padding: 0 10px 0 0;
+	margin: 0; }
+#mainNavigation li {
+	list-style-type: none; }
+.L1NavBar{	/*Should be for the 'Home' navigation at the top  */
+	color: #333333; 
+	text-transform: uppercase; 
+	border-bottom: thin solid #D0CAD2; 
+	margin-top: 20px; 
+	font-size: 13px; 
+	font-weight: bold; }
+.L2NavBar{
+	padding-left: 10px; 
+	font-size: .8rem;  
+	padding-top: 5px; }
+.L3NavBar{
+	font-size: 9pt; 
+	padding-left: 20px; 
+	padding-top: 5px; }
+.L4NavBar{
+	font-size: 7pt; 
+	padding-left: 20px; 
+	padding-top: 5px; }
+/*-- End navigation/Sidebar styling --*/
+/*-- Start mainContent specific styling --*/
+#mainContent {
+	max-width: 52%;
+	min-width: 450px;
+	height: auto;
+	float: left;
+	overflow: hidden;
+	border: 0px;
+	padding: 0px;
+	text-align: left;
+	/* background-color: #E6E8FA; */ 
+}
+	/*background:url(http://weber-dev.weber.edu/images/LeftDropShadow230.png) repeat-y;}*/
+#mainContent a{
+	/* font-weight: bold; */
+	font-family: serif;
+}
+#contentBody { 
+	padding: 20px; 
+	margin-left: 5%;
+}
+/*-- End mainContent --*/
+/*-- Start sidebar2 styles --*/
+#sidebar2 { 
+    width: 240px;
+    float: right;
+    min-height: 300px;
+    overflow: hidden;
+	/*height: 100%;
+	background-image: url(../images/RightDropShadow200.png);
+	background-position: right; 
+	background-repeat: repeat-y; */}
+#sidebar2Header, #sidebar2operation{
+	background-color: rgb(126, 98, 138); 
+	height: 30px;
+	color: #FFFFFF;
+	font-weight: bold; }
+#sidebar2Content table{
+	width: 100%;
+	padding: 20px 0 0 10px; 
+	margin-bottom: 20px;
+}
+/*-- End sidebar2 styles --*/
+/*-- End Content Wrapper --*/
+/*-- Start Footer styles --*/
+#footerWrapper { 
+	padding-top: 15px; 
+	text-align: center;  
+	height: 320px;
+	min-width: 980px;
+	max-width: 1600px;
+	background: url(http://www.weber.edu/ui/images/clock-tower.png) no-repeat 15% 100%;
+}
+#footerWrapper p { 
+	color: whitesmoke; 
+}

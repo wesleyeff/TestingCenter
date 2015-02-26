@@ -1,4 +1,6 @@
 <?php
+$this->form(new \Zend\Form\Form());
+//$this->form(null, \TwbBundle\Form\View\Helper\TwbBundleForm::LAYOUT_HORIZONTAL);
 
 $title = 'Add new appointment';
 $this->headTitle($title);
@@ -9,11 +11,18 @@ $form->setAttribute('action', $this->url('appointment', array('action' => 'add')
 $form->prepare();
 
 echo $this->form()->openTag($form);
-//echo $this->formCollection($form);
+echo $this->formCollection($form);
 
-echo $this->formHidden($form->get('appointment_id'));
-echo $this->formRow($form->get('user_id'));
-echo $this->formRow($form->get('exam_id'));
-echo $this->formSubmit($form->get('submit'));
+//echo $this->formHidden($form->get('appointment_id'));
+//echo $this->formRow($form->get('user_id'));
+//echo $this->formRow($form->get('exam_id'));
+//echo $this->formSubmit($form->get('submit'));
 
 echo $this->form()->closeTag();
+?>
+<script>
+//    var j = jQuery.noConflict();
+//    j(document).ready(function(){
+        $('.datepickerthing').datetimepicker();
+//    })
+</script>
