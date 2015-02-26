@@ -10,6 +10,7 @@ use Zend\Mail;
 class AppointmentController extends AbstractActionController
 {
     protected $appointmentTable;
+    protected $userTable;
 
     public function indexAction()
     {
@@ -57,7 +58,10 @@ class AppointmentController extends AbstractActionController
                 return $this->redirect()->toRoute('appointment');
             }
         }
-        return array('form' => $form);
+        return array(
+            'form' => $form,
+            'teachers' => $this->getUserTable()->getGroup(1),
+        );
     }
 
     public function editAction()
@@ -88,4 +92,13 @@ class AppointmentController extends AbstractActionController
         return $this->appointmentTable;
     }
 
+    public function getUserTable()
+    {
+        if(!$this->userTable)
+        {
+            $sm = $this->getServiceLocator();
+            $this->userTable = $sm->get('Appointment\Model\UserTable');
+        }
+        return $this->userTable;
+    }
 }

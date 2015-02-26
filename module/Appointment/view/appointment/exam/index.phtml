@@ -1,0 +1,39 @@
+<?php
+
+$title = 'Exams';
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a class="btn btn-default" href="<?php echo $this->url('exam', array('action' => 'add')); ?>">Add Exam</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Exam ID</th>
+        <th>Exam Name</th>
+        <th>Instructor</th>
+        <th>Time Limit</th>
+        <th>Comments</th>
+        <th>Allowed Items</th>
+        <th></th>
+    </tr>
+    <?php foreach ($exams as $exam) : ?>
+        <tr>
+
+            <td><?php echo $this->escapeHtml($exam->exam_id); ?></td>
+            <td><?php echo $this->escapeHtml($exam->exam_name);?></td>
+            <td><?php echo $this->escapeHtml($exam->instructor_id);?></td>
+            <td><?php echo $this->escapeHtml($exam->allowance_time);?></td>
+            <td><?php echo $this->escapeHtml($exam->comments); ?></td>
+            <td><?php echo $this->escapeHtml($exam->allowed_items);?></td>
+            <td>
+                <a href="<?php echo $this->url('exam',
+                    array('action'=>'edit', 'id' => $exam->id));?>">Edit</a>
+                <a href="<?php echo $this->url('exam',
+                    array('action'=>'delete', 'id' => $exam->id));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach ?>
+</table>

@@ -9,6 +9,8 @@ use Appointment\Model\User;
 use Appointment\Model\UserTable;
 use Appointment\Model\Appointment;
 use Appointment\Model\AppointmentTable;
+use Appointment\Model\Exam;
+use Appointment\Model\ExamTable;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
@@ -56,6 +58,17 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Appointment());
                     return new TableGateway('appointments', $dbAdapter, null, $resultSetPrototype);
+                },
+                'Appointment\Model\ExamTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ExamTableGateway');
+                    $table = new ExamTable($tableGateway);
+                    return $table;
+                },
+                'ExamTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Exam());
+                    return new TableGateway('exams', $dbAdapter, null, $resultSetPrototype);
                 },
                 'Appointment\Model\AuthStorage' => function($sm) {
                     return new \Appointment\Model\AuthStorage();

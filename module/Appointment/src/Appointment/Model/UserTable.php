@@ -18,6 +18,17 @@ class UserTable
         return $resultSet;
     }
 
+    public function getGroup($group_id)
+    {
+        $group_id = (int)$group_id;
+        $resultSet = $this->tableGateway->select(array('role' => $group_id));
+        if(!$resultSet)
+        {
+            throw new \Exception("No users in the group: $group_id");
+        }
+        return $resultSet;
+    }
+
     public function getUser($id)
     {
         $id = (int) $id;

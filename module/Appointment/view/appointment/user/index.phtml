@@ -5,7 +5,7 @@ $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('user', array('action'=>'add'));?>">Add new User</a>
+    <a class="btn btn-default" href="<?php echo $this->url('user', array('action'=>'add'));?>">Add new User</a>
 </p>
 
 <table class="table">

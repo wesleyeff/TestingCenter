@@ -7,6 +7,7 @@ return array(
         'invokables' => array(
             'Appointment\Controller\Appointment' => 'Appointment\Controller\AppointmentController',
             'Appointment\Controller\User' => 'Appointment\Controller\UserController',
+            'Appointment\Controller\Exam' => 'Appointment\Controller\ExamController',
         ),
     ),
     'router' => array(
@@ -35,6 +36,20 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Appointment\Controller\User',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'exam' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/exam[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Appointment\Controller\Exam',
                         'action'     => 'index',
                     ),
                 ),
