@@ -10,6 +10,7 @@ return array(
         'Application',
         'Appointment',
         'TwbBundle',
+        'Auth',
     ),
     'module_listener_options' => array(
         'module_paths' => array(
