@@ -14,26 +14,24 @@ class AuthForm extends Form
             'name' => 'usr_name',
             'attributes' => array(
                 'type'  => 'text',
-            ),
-            'options' => array(
-                'label' => 'Username',
+                'placeholder' => 'Username',
+                'class' => 'form-control input-lg',
             ),
         ));
         $this->add(array(
             'name' => 'usr_password',
             'attributes' => array(
                 'type'  => 'password',
-            ),
-            'options' => array(
-                'label' => 'Password',
+                'placeholder' => 'Password',
+                'class' => 'form-control input-lg',
             ),
         ));
         $this->add(array(
             'name' => 'rememberme',
 			'type' => 'checkbox', // 'Zend\Form\Element\Checkbox',			
-//            'attributes' => array( // Is not working this way
-//                'type'  => '\Zend\Form\Element\Checkbox',
-//            ),
+            'attributes' => array( // Is not working this way
+                'class' => 'rememberme',
+            ),
             'options' => array(
                 'label' => 'Remember Me?',
 //				'checked_value' => 'true', without value here will be 1
@@ -46,6 +44,7 @@ class AuthForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class' => 'btn',
             ),
         )); 
     }

@@ -12,16 +12,6 @@ class Auth implements InputFilterAwareInterface
     public $usr_name;
     public $usr_password;
     public $usr_email;	
-    public $usrl_id;	
-    public $lng_id;	
-    public $usr_active;	
-    public $usr_question;	
-    public $usr_answer;	
-    public $usr_picture;	
-    public $usr_password_salt;
-    public $usr_registration_date;
-    public $usr_registration_token;	
-    public $usr_email_confirmed;	
 
 	// Hydration
 	// ArrayObject, or at least implement exchangeArray. For Zend\Db\ResultSet\ResultSet to work
@@ -31,16 +21,6 @@ class Auth implements InputFilterAwareInterface
         $this->usr_name = (!empty($data['usr_name'])) ? $data['usr_name'] : null;
         $this->usr_password = (!empty($data['usr_password'])) ? $data['usr_password'] : null;
         $this->usr_email = (!empty($data['usr_email'])) ? $data['usr_email'] : null;
-        $this->usrl_id = (!empty($data['usrl_id'])) ? $data['usrl_id'] : null;
-        $this->lng_id = (!empty($data['lng_id'])) ? $data['lng_id'] : null;
-        $this->usr_active = (isset($data['usr_active'])) ? $data['usr_active'] : null;
-        $this->usr_question = (!empty($data['usr_question'])) ? $data['usr_question'] : null;
-        $this->usr_answer = (!empty($data['usr_answer'])) ? $data['usr_answer'] : null;
-        $this->usr_picture = (!empty($data['usr_picture'])) ? $data['usr_picture'] : null;
-        $this->usr_password_salt = (!empty($data['usr_password_salt'])) ? $data['usr_password_salt'] : null;
-        $this->usr_registration_date = (!empty($data['usr_registration_date'])) ? $data['usr_registration_date'] : null;
-        $this->usr_registration_token = (!empty($data['usr_registration_token'])) ? $data['usr_registration_token'] : null;
-        $this->usr_email_confirmed = (isset($data['usr_email_confirmed'])) ? $data['usr_email_confirmed'] : null;
     }	
 
 	// Extraction. The Registration from the tutorial works even without it.

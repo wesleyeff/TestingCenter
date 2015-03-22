@@ -55,20 +55,6 @@ class UserFilter extends InputFilter
 					),
 				),
 			),
-		));
-
-		$this->add(array(
-			'name'     => 'usr_active',
-			'required' => false,
-			'filters'  => array(
-				array('name' => 'Int'),
-			),
-			'validators' => array(
-				array(
-					'name'    => 'Digits',
-				),
-			),
-		));			
-	
+		));	
 	}
 }
