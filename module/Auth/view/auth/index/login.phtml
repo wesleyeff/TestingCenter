@@ -25,9 +25,9 @@
 			?>
 			<?php // view helper
 			    if ($user = $this->identity()) {
-			        echo '<p class="btm-title">Logged in as ' . $this->escapeHtml($user->usr_name).'</p>';
+			        echo '<p class="btm-title">Logged in as ' . $this->escapeHtml($user->usr_name);
 			?>		
-			| <a class="btm-title" href="<?php echo $this->url('auth/default', array('controller' => 'index', 'action' => 'logout'));?>"><?php echo $this->translate('Logout'); ?></a>
+			|&nbsp;<a class="btm-title" href="<?php echo $this->url('auth/default', array('controller' => 'index', 'action' => 'logout'));?>"><?php echo $this->translate('Logout'); ?></a></p>
 			<?php
 			    } else {
 			        echo '<p class="btm-title">Not logged in</p>';
