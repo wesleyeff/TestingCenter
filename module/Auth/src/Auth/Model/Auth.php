@@ -5,7 +5,6 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-// the object will be hydrated by Zend\Db\TableGateway\TableGateway
 class Auth implements InputFilterAwareInterface
 {
     public $usr_id;
@@ -13,8 +12,6 @@ class Auth implements InputFilterAwareInterface
     public $usr_password;
     public $usr_email;	
 
-	// Hydration
-	// ArrayObject, or at least implement exchangeArray. For Zend\Db\ResultSet\ResultSet to work
     public function exchangeArray($data) 
     {
         $this->usr_id     = (!empty($data['usr_id'])) ? $data['usr_id'] : null;
@@ -23,8 +20,6 @@ class Auth implements InputFilterAwareInterface
         $this->usr_email = (!empty($data['usr_email'])) ? $data['usr_email'] : null;
     }	
 
-	// Extraction. The Registration from the tutorial works even without it.
-	// The standard Hydrator of the Form expects getArrayCopy to be able to bind
     public function getArrayCopy()
     {
         return get_object_vars($this);

@@ -2,7 +2,7 @@
 return array(
 	'controllers' => array(
         'invokables' => array(
-            'Auth\Controller\Index' => 'Auth\Controller\IndexController',
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
         ),
 	),
     'router' => array(
@@ -10,9 +10,9 @@ return array(
 			'auth' => array(
 				'type'    => 'Literal',
 				'options' => array(
-					'route'    => '/auth',
+					'route'    => '/admin',
 					'defaults' => array(
-						'__NAMESPACE__' => 'Auth\Controller',
+						'__NAMESPACE__' => 'Admin\Controller',
 						'controller'    => 'Index',
 						'action'        => 'index',
 					),

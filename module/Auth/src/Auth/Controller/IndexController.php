@@ -40,12 +40,11 @@ class IndexController extends AbstractActionController
 				$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
 				
 				$config = $this->getServiceLocator()->get('Config');
-				// $staticSalt = $config['static_salt'];
 
 				$authAdapter = new AuthAdapter($dbAdapter,
-										   'users', // there is a method setTableName to do the same
-										   'usr_name', // there is a method setIdentityColumn to do the same
-										   'usr_password', // there is a method setCredentialColumn to do the same
+										   'users',
+										   'usr_name',
+										   'usr_password',
 										   '' // setCredentialTreatment(parametrized string) 'MD5(?)'
 										  );
 				$authAdapter
@@ -54,9 +53,6 @@ class IndexController extends AbstractActionController
 				;
 				
 				$auth = new AuthenticationService();
-				// or prepare in the globa.config.php and get it from there. Better to be in a module, so we can replace in another module.
-				// $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
-				// $sm->setService('Zend\Authentication\AuthenticationService', $auth); // You can set the service here but will be loaded only if this action called.
 				$result = $auth->authenticate($authAdapter);			
 				
 				switch ($result->getCode()) {
@@ -75,7 +71,6 @@ class IndexController extends AbstractActionController
 							'usr_password'
 						));
 						$time = 1209600; // 14 days 1209600/3600 = 336 hours => 336/24 = 14 days
-//						if ($data['rememberme']) $storage->getSession()->getManager()->rememberMe($time); // no way to get the session
 						if ($data['rememberme']) {
 							$sessionManager = new \Zend\Session\SessionManager();
 							$sessionManager->rememberMe($time);
@@ -97,15 +92,12 @@ class IndexController extends AbstractActionController
 	public function logoutAction()
 	{
 		$auth = new AuthenticationService();
-		// or prepare in the globa.config.php and get it from there
-		// $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
 		
 		if ($auth->hasIdentity()) {
 			$identity = $auth->getIdentity();
 		}			
 		
 		$auth->clearIdentity();
-//		$auth->getStorage()->session->getManager()->forgetMe(); // no way to get the sessionmanager from storage
 		$sessionManager = new \Zend\Session\SessionManager();
 		$sessionManager->forgetMe();
 		
