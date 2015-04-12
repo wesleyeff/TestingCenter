@@ -40,13 +40,13 @@ class IndexController extends AbstractActionController
 				$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
 				
 				$config = $this->getServiceLocator()->get('Config');
-				$staticSalt = $config['static_salt'];
+				// $staticSalt = $config['static_salt'];
 
 				$authAdapter = new AuthAdapter($dbAdapter,
 										   'users', // there is a method setTableName to do the same
 										   'usr_name', // there is a method setIdentityColumn to do the same
 										   'usr_password', // there is a method setCredentialColumn to do the same
-										   "MD5(CONCAT('$staticSalt', ?, usr_password_salt)) AND usr_active = 1" // setCredentialTreatment(parametrized string) 'MD5(?)'
+										   '' // setCredentialTreatment(parametrized string) 'MD5(?)'
 										  );
 				$authAdapter
 					->setIdentity($data['usr_name'])

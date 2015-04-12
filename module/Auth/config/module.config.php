@@ -3,9 +3,7 @@ return array(
 //	'static_salt' => 'aFGQ475SDsdfsaf2342', // I am going to move it to global.php. It should be accessable everywhere
 	'controllers' => array(
         'invokables' => array(
-            'Auth\Controller\Index' => 'Auth\Controller\IndexController',	
-            'Auth\Controller\Registration' => 'Auth\Controller\RegistrationController',	
-            'Auth\Controller\Admin' => 'Auth\Controller\AdminController',	
+            'Auth\Controller\Index' => 'Auth\Controller\IndexController',
         ),
 	),
     'router' => array(
