@@ -54,6 +54,7 @@ class IndexController extends AbstractActionController
 			$authForm = new Auth();
             $form->setInputFilter($authForm->getInputFilter());
 			$form->setData($request->getPost());
+//<<<<<<< HEAD
 			if ($form->isValid()) {
 
                 $authForm->exchangeArray($form->getData());
@@ -109,6 +110,7 @@ class IndexController extends AbstractActionController
 						$storage->write($authAdapter->getAccountObject());
                         $messages .= ' ident: ' . $authAdapter->getIdentity() . ' close ident. ';
 						$time = 1209600; // 14 days 1209600/3600 = 336 hours => 336/24 = 14 days
+//<<<<<<< HEAD
                         $id = $authAdapter->getAccountObject()->cn;
                         echo $id. '   ';
                         $firstName = $authAdapter->getAccountObject()->givenname;
@@ -144,11 +146,7 @@ class IndexController extends AbstractActionController
                             $this->getUserTable()->saveUser($user);
                             return $this->redirect()->toRoute('appointment');
                         }
-
-
-
 						break;
-
 					default:
 						// do stuff for other failure
                         $messages .= '\nFailure other failure\n';
@@ -165,15 +163,12 @@ class IndexController extends AbstractActionController
 	public function logoutAction()
 	{
 		$auth = new AuthenticationService();
-		// or prepare in the globa.config.php and get it from there
-		// $auth = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
 		
 		if ($auth->hasIdentity()) {
 			$identity = $auth->getIdentity();
 		}			
 		
 		$auth->clearIdentity();
-//		$auth->getStorage()->session->getManager()->forgetMe(); // no way to get the sessionmanager from storage
 		$sessionManager = new \Zend\Session\SessionManager();
 		$sessionManager->forgetMe();
 		

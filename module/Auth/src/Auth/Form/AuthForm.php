@@ -34,14 +34,12 @@ class AuthForm extends Form
         ));
         $this->add(array(
             'name' => 'rememberme',
-			'type' => 'checkbox', // 'Zend\Form\Element\Checkbox',			
-            'attributes' => array( // Is not working this way
+			'type' => 'checkbox',
+            'attributes' => array(
                 'class' => 'rememberme',
             ),
             'options' => array(
                 'label' => 'Remember Me?',
-//				'checked_value' => 'true', without value here will be 1
-//				'unchecked_value' => 'false', // witll be 1
             ),
         ));			
         $this->add(array(

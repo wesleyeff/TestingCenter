@@ -8,7 +8,6 @@ class UserFilter extends InputFilter
 {
 	public function __construct()
 	{
-		// self::__construct(); // parnt::__construct(); - trows and error
 		$this->add(array(
 			'name'     => 'usr_name',
 			'required' => false,
