@@ -9,6 +9,7 @@
 namespace Appointment\Controller;
 
 use Appointment\Form\ExamForm;
+use Appointment\Model\Exam;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -38,17 +39,7 @@ class ExamController extends AbstractActionController
 
             if ($form->isValid()) {
                 $exam->exchangeArray($form->getData());
-                $this->getAppointmentTable()->saveAppointment($exam);
-
-                //$mail = new Mail\Message();
-//                $mail->setSubject('New Test Scheduled at CS Testing Center');
-//                $mail->setBody('You have added an appointment at '.$appt->start_time.'. ');
-//                $mail->setFrom('cstestcenter@test.com');
-//                $mail->setTo('wesleyeff@gmail.com');
-
-                //$transport = new Mail\Transport\Sendmail();
-//                $transport->send($mail);
-
+                $this->getExamTable()->saveExam($exam);
 
                 // Redirect to list of Exams
                 return $this->redirect()->toRoute('exam');
@@ -56,7 +47,65 @@ class ExamController extends AbstractActionController
         }
         return array(
             'form' => $form,
-            //'teachers' => $this->getUserTable()->getGroup(1),
+        );
+    }
+
+    public function editAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('exam', array(
+                'action' => 'add'
+            ));
+        }
+        $exam = $this->getExamTable()->getExam($id);
+
+        $form  = new ExamForm();
+        $form->bind($exam);
+        $form->get('submit')->setAttribute('value', 'Save');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($exam->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $this->getExamTable()->saveExam($form->getData());
+
+                // Redirect to list of albums
+                return $this->redirect()->toRoute('exam');
+            }
+        }
+
+        return array(
+            'exam_id' => $id,
+            'form' => $form,
+        );
+    }
+
+    public function deleteAction()
+    {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('exam');
+        }
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $this->getExamTable()->deleteExam($id);
+            }
+
+            // Redirect to list of albums
+            return $this->redirect()->toRoute('exam');
+        }
+
+        return array(
+            'id'    => $id,
+            'exam' => $this->getExamTable()->getExam($id)
         );
     }
 

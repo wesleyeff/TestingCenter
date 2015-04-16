@@ -11,7 +11,10 @@ class Auth implements InputFilterAwareInterface
     public $usr_id;
     public $usr_name;
     public $usr_password;
-    public $usr_email;	
+    public $usr_email;
+    public $remember_me;
+
+    protected $inputFilter;
 
 	// Hydration
 	// ArrayObject, or at least implement exchangeArray. For Zend\Db\ResultSet\ResultSet to work
@@ -21,6 +24,7 @@ class Auth implements InputFilterAwareInterface
         $this->usr_name = (!empty($data['usr_name'])) ? $data['usr_name'] : null;
         $this->usr_password = (!empty($data['usr_password'])) ? $data['usr_password'] : null;
         $this->usr_email = (!empty($data['usr_email'])) ? $data['usr_email'] : null;
+        $this->remember_me = (!empty($data['remember_me'])) ? $data['remember_me'] : null;
     }	
 
 	// Extraction. The Registration from the tutorial works even without it.
@@ -29,9 +33,6 @@ class Auth implements InputFilterAwareInterface
     {
         return get_object_vars($this);
     }
-	
-	
-	protected $inputFilter;
 
     public function setInputFilter(InputFilterInterface $inputFilter)
     {

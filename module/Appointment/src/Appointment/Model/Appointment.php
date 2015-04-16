@@ -31,6 +31,11 @@ class Appointment implements InputFilterAwareInterface
         $this->seat_number = (!empty($data['seat_number'])) ? $data['seat_number'] : null;
     }
 
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception("Not used");
@@ -51,7 +56,7 @@ class Appointment implements InputFilterAwareInterface
             ));
             $inputFilter->add(array(
                 'name'     => 'start_time',
-                'required' => false,
+                'required' => true,
             ));
             $inputFilter->add(array(
                 'name'     => 'end_time',

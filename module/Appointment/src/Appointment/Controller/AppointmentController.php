@@ -44,14 +44,14 @@ class AppointmentController extends AbstractActionController
                 $appt->exchangeArray($form->getData());
                 $this->getAppointmentTable()->saveAppointment($appt);
 
-                $mail = new Mail\Message();
-                $mail->setSubject('New Test Scheduled at CS Testing Center');
-                $mail->setBody('You have added an appointment at '.$appt->start_time.'. ');
-                $mail->setFrom('cstestcenter@test.com');
-                $mail->setTo('wesleyeff@gmail.com');
-
-                $transport = new Mail\Transport\Sendmail();
-                $transport->send($mail);
+//                $mail = new Mail\Message();
+//                $mail->setSubject('New Test Scheduled at CS Testing Center');
+//                $mail->setBody('You have added an appointment at '.$appt->start_time.'. ');
+//                $mail->setFrom('cstestcenter@test.com');
+//                $mail->setTo('wesleyeff@gmail.com');
+//
+//                $transport = new Mail\Transport\Sendmail();
+//                $transport->send($mail);
 
 
                 // Redirect to list of albums
@@ -67,19 +67,60 @@ class AppointmentController extends AbstractActionController
     public function editAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        if(!$id)
-        {
+        if (!$id) {
             return $this->redirect()->toRoute('appointment', array(
                 'action' => 'add'
             ));
         }
+        $appt = $this->getAppointmentTable()->getAppointment($id);
 
-        return new ViewModel();
+        $form = new AppointmentForm();
+        $form->bind($appt);
+        $form->get('submit')->setAttribute('value', 'Save');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $form->setInputFilter($appt->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $this->getAppointmentTable()->saveAppointment($form->getData());
+
+                // Redirect to list of albums
+                return $this->redirect()->toRoute('appointment');
+            }
+        }
+
+        return array(
+            'appointment_id' => $id,
+            'form' => $form,
+        );
     }
 
-    public  function deleteAction()
+    public function deleteAction()
     {
+        $id = (int) $this->params()->fromRoute('id', 0);
+        if (!$id) {
+            return $this->redirect()->toRoute('appointment');
+        }
 
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->getPost('del', 'No');
+
+            if ($del == 'Yes') {
+                $id = (int) $request->getPost('id');
+                $this->getAppointmentTable()->deleteAppointment($id);
+            }
+
+            // Redirect to list of albums
+            return $this->redirect()->toRoute('appointment');
+        }
+
+        return array(
+            'id'    => $id,
+            'appt' => $this->getAppointmentTable()->getAppointment($id),
+        );
     }
 
     public function getAppointmentTable()

@@ -1,3 +1,29 @@
-<?php?>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wfredrickson
+ * Date: 2/25/2015
+ * Time: 9:25 PM
+ */
+$this->form(new \Zend\Form\Form());
 
-<h1>Hello</h1>
+$title = "Edit appointment";
+$this->headTitle($title);
+?>
+
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<div>
+    <?php
+    //$form = $this->form;
+    $form->setAttribute('action', $this->url('appointment', array('action' => 'add', 'id' => $this->id,)));
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+    echo $this->formCollection($form);
+    echo $this->form()->closeTag($form);
+    ?>
+</div>
+
+<script>
+    $('.datepickerthing').datetimepicker();
+</script>

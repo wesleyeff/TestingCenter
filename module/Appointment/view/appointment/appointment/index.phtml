@@ -32,9 +32,9 @@ $this->headTitle($title);
             <td><?php echo $this->escapeHtml($appt->seat_number);?></td>
             <td>
                 <a href="<?php echo $this->url('appointment',
-                    array('action'=>'edit', 'id' => $appt->id));?>">Edit</a>
+                    array('action'=>'edit', 'id' => $appt->appointment_id));?>">Edit</a>
                 <a href="<?php echo $this->url('appointment',
-                    array('action'=>'delete', 'id' => $appt->id));?>">Delete</a>
+                    array('action'=>'delete', 'id' => $appt->appointment_id));?>">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

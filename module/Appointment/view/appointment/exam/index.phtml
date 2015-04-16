@@ -30,9 +30,9 @@ $this->headTitle($title);
             <td><?php echo $this->escapeHtml($exam->allowed_items);?></td>
             <td>
                 <a href="<?php echo $this->url('exam',
-                    array('action'=>'edit', 'id' => $exam->id));?>">Edit</a>
+                    array('action'=>'edit', 'id' => $exam->exam_id));?>">Edit</a>
                 <a href="<?php echo $this->url('exam',
-                    array('action'=>'delete', 'id' => $exam->id));?>">Delete</a>
+                    array('action'=>'delete', 'id' => $exam->exam_id));?>">Delete</a>
             </td>
         </tr>
     <?php endforeach ?>

@@ -17,7 +17,7 @@ class AppointmentForm extends Form
         ));
         $this->add(array(
             'name' => 'user_id',
-            'type' => 'Text',
+            'type' => 'hidden',
             'options' => array(
                 'label' => 'User ID',
             ),
@@ -37,7 +37,7 @@ class AppointmentForm extends Form
         ));
         $this->add(array(
             'name' => 'end_time',
-            'type' => 'Text',
+            'type' => 'hidden',
             'options' => array(
                 'label' => 'End Time'
             ),
@@ -47,7 +47,7 @@ class AppointmentForm extends Form
         ));
         $this->add(array(
             'name' => 'checkin_time',
-            'type' => 'Text',
+            'type' => 'hidden',
             'options' => array(
                 'label' => 'Checkin Time'
             ),
@@ -57,7 +57,7 @@ class AppointmentForm extends Form
         ));
         $this->add(array(
             'name' => 'checkout_time',
-            'type' => 'Text',
+            'type' => 'hidden',
             'options' => array(
                 'label' => 'Checkout Time'
             ),
@@ -67,7 +67,7 @@ class AppointmentForm extends Form
         ));
         $this->add(array(
             'name' => 'exam_id',
-            'type' => 'Text',
+            'type' => 'hidden',
             'options' => array(
                 'label' => 'Exam ID'
             ),
@@ -77,7 +77,7 @@ class AppointmentForm extends Form
         ));
         $this->add(array(
             'name' => 'seat_number',
-            'type' => 'Text',
+            'type' => 'hidden',
             'options' => array(
                 'label' => 'Seat Number'
             ),
@@ -88,6 +88,7 @@ class AppointmentForm extends Form
             'attributes' => array(
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class' => 'btn btn-default',
             ),
         ));
     }

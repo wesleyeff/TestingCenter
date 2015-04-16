@@ -12,18 +12,24 @@ class AuthForm extends Form
 
         $this->add(array(
             'name' => 'usr_name',
+            'type' => 'text',
+            'options' => array(
+//                'placeholder' => 'w#',
+            ),
             'attributes' => array(
-                'type'  => 'text',
                 'placeholder' => 'Username',
-                'class' => 'form-control input-lg',
+//                'class' => 'form-control input-lg',
             ),
         ));
         $this->add(array(
             'name' => 'usr_password',
+            'type'  => 'password',
+            'options' => array(
+//                'label' => 'Password',
+            ),
             'attributes' => array(
-                'type'  => 'password',
                 'placeholder' => 'Password',
-                'class' => 'form-control input-lg',
+//                'class' => 'form-control input-lg',
             ),
         ));
         $this->add(array(
@@ -40,11 +46,11 @@ class AuthForm extends Form
         ));			
         $this->add(array(
             'name' => 'submit',
+            'type'  => 'submit',
             'attributes' => array(
-                'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
-                'class' => 'btn',
+                'class' => 'btn btn-default',
             ),
         )); 
     }

@@ -18,4 +18,9 @@ class User
         $this->email_address = (!empty($data['email_address'])) ? $data['email_address'] : null;
         $this->role = (!empty($data['role'])) ? $data['role']: null;
     }
+
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
 }

@@ -5,3 +5,25 @@
  * Date: 2/25/2015
  * Time: 9:26 PM
  */
+
+$title = 'Delete exam';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Are you sure that you want to delete
+    '<?php echo $this->escapeHtml($exam->exam_name); ?>'?
+</p>
+<?php
+$url = $this->url('exam', array(
+    'action' => 'delete',
+    'id'     => $this->exam_id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+    <div>
+        <input type="hidden" name="id" value="<?php echo (int) $exam->exam_id; ?>" />
+        <input type="submit" name="del" value="Yes" class="btn btn-default" />
+        <input type="submit" name="del" value="No" class="btn btn-default" />
+    </div>
+</form>

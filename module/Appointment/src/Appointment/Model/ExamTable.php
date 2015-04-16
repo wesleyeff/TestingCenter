@@ -27,7 +27,7 @@ class ExamTable
     public function getExam($id)
     {
         $id = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
+        $rowset = $this->tableGateway->select(array('exam_id' => $id));
         $row = $rowset->current();
         if(!$row)
         {

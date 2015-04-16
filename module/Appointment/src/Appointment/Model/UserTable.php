@@ -2,6 +2,7 @@
 namespace Appointment\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Select;
 
 class UserTable
 {
@@ -14,8 +15,15 @@ class UserTable
 
     public function fetchAll()
     {
-        $resultSet = $this->tableGateway->select();
-        return $resultSet;
+//        $resultSet = $this->tableGateway->select();
+//        return $resultSet;
+        return $this->tableGateway->select();
+
+//        $select = new Select();
+//        $select->from('users');
+//        $select->columns(array('first' => 'first_name'));
+//        $resultSet = $this->tableGateway->selectWith($select);
+//        return $resultSet;
     }
 
     public function getGroup($group_id)
@@ -31,11 +39,12 @@ class UserTable
 
     public function getUser($id)
     {
-        $id = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
+        //$id = (int) $id;
+        $rowset = $this->tableGateway->select(array('user_id' => $id));
         $row = $rowset->current();
         if(!$row)
         {
+            return false;
             throw new \Exception("Could not find user id: $id");
         }
         return $row;
@@ -44,13 +53,14 @@ class UserTable
     public function saveUser(User $user)
     {
         $data = array(
+            'user_id' => $user->user_id,
             'first_name' => $user->first_name,
             'last_name' => $user->last_name,
             'email_address' => $user->email_address,
             'role' => $user->role,
         );
 
-        $id = (int) $user->user_id;
+        $id = $user->user_id;
         if ($id == 0)
         {
             $this->tableGateway->insert($data);

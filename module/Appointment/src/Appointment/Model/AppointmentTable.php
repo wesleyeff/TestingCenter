@@ -21,7 +21,7 @@ class AppointmentTable
     public function getAppointment($id)
     {
         $id = (int) $id;
-        $rowset = $this->tableGateway->select(array('id' => $id));
+        $rowset = $this->tableGateway->select(array('appointment_id' => $id));
         $row = $rowset->current();
         if(!$row)
         {

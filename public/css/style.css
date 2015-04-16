@@ -17,15 +17,15 @@ body {
   user-select: none;
 }
 .btn {
-  float: right;
-  color: #fff;
+  /*float: right;*/
+  /*color: #fff;*/
   width: 200px;
-  background-color: #70d900;
+  /*background-color: #70d900;*/
 }
 
 .btn:hover{
-  background-color: #58C100;
-  color: #fff
+  /*background-color: #58C100;*/
+  /*color: #fff*/
 }
 
 .controls .checkbox{

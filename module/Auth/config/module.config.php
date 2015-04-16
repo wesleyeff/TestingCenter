@@ -5,7 +5,8 @@ return array(
         'invokables' => array(
             'Auth\Controller\Index' => 'Auth\Controller\IndexController',	
             'Auth\Controller\Registration' => 'Auth\Controller\RegistrationController',	
-            'Auth\Controller\Admin' => 'Auth\Controller\AdminController',	
+            'Auth\Controller\Admin' => 'Auth\Controller\AdminController',
+            'Appointment\Controller\Appointment' => 'Appointment\Controller\AppointmentController',
         ),
 	),
     'router' => array(
@@ -36,7 +37,21 @@ return array(
 						),
 					),
 				),
-			),			
+			),
+            'appointment' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/appointment[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Appointment\Controller\Appointment',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
 		),
 	),
     'view_manager' => array(
@@ -44,7 +59,8 @@ return array(
 //            'layout/Auth'           => __DIR__ . '/../view/layout/Auth.phtml',
 //        ),
         'template_path_stack' => array(
-            'auth' => __DIR__ . '/../view'
+            'auth' => __DIR__ . '/../view',
+//            'Appointment' => __DIR__ . '/../view',
         ),
 		
 		'display_exceptions' => true,

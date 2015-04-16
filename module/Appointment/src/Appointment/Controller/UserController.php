@@ -3,6 +3,8 @@ namespace Appointment\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
+use Zend\Json\Json;
 
 #auth
 use Zend\Authentication\AuthenticationService;
@@ -34,6 +36,21 @@ class UserController extends AbstractActionController
                 'users' => $this->getUserTable()->fetchAll(),
             )
         );
+    }
+
+    public function thingAction()
+    {
+        $results = $this->getUserTable()->fetchAll();
+        $data = array();
+        foreach($results as $result) {
+            $data[] = $result;
+        }
+
+        return new JsonModel(array(
+            'users' => $data, //$this->getUserTable()->fetchAll(),
+            'success' => true,
+            'title' => 'Some Tite',
+        ));
     }
 
     public function addAction()
